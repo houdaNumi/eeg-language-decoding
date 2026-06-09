@@ -4,7 +4,12 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
+
+
+
+
 
 
 
@@ -40,10 +45,16 @@ x_train_scaler= scaler.fit_transform(x_train_selected)
 x_test_scaler= scaler.transform(x_test_selected)
 
 
-svm= SVC()
+svm= SVC(class_weight='balanced')
 svm.fit(x_train_scaler, y_train)
-y_pred= svm.predict(x_test_scaler)
+y_pred_svm= svm.predict(x_test_scaler)
 
-print(accuracy_score(y_test, y_pred))
-print(classification_report(y_test, y_pred))
+knn = KNeighborsClassifier()
+knn.fit(x_train_scaler, y_train)
+y_pred_knn= knn.predict(x_test_scaler)
+
+print(accuracy_score(y_test, y_pred_svm))
+print(classification_report(y_test, y_pred_svm))
+print(accuracy_score(y_test, y_pred_knn))
+print(classification_report(y_test, y_pred_knn))
 

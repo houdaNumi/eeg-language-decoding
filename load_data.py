@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 data = sio.loadmat("resultsZAB_SR.mat")
-#print(data.keys())
+print(data.keys())
 
 #print(data['sentenceData'].shape)
 #print(data['sentenceData'][0,0]['content'][0])

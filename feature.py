@@ -3,6 +3,7 @@ import numpy as np
 import csv
 
 
+
 vect_feature=[]
 for i in range(400):
     for word in data['sentenceData'][0,i]['word'][0]:
@@ -63,9 +64,12 @@ for phrase in range(400):
                         t7 = word['TRT_a1']
                         t8 = word['TRT_a2']
 
+
+
                         if all(t.size > 0 for t in [t1, t2, t3, t4, t5, t6, t7, t8]):
                                 x_phrases.append(np.concatenate([t1, t2, t3, t4, t5, t6, t7, t8]))
                                 y_labels.append(label)
+
 
 
 
